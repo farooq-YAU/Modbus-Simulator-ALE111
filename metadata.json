@@ -1,0 +1,11 @@
+{
+  "name": "Modbus Workbench",
+  "description": "Industrial Modbus TCP Server and Modbus RTU Client Workbench",
+  "requestFramePermissions": [
+    "usb",
+    "serial"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
