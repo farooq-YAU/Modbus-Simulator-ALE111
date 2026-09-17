@@ -1,3 +1,26 @@
+export function crc16Modbus(bytes: Uint8Array): number {
+  let crc = 0xffff;
+  for (const byte of bytes) {
+    crc ^= byte;
+    for (let bit = 0; bit < 8; bit++) crc = crc & 1 ? (crc >>> 1) ^ 0xa001 : crc >>> 1;
+  }
+  return crc;
+}
+
+export function appendCrc(frame: Uint8Array): Uint8Array {
+  const result = new Uint8Array(frame.length + 2);
+  result.set(frame);
+  const crc = crc16Modbus(frame);
+  result[result.length - 2] = crc & 0xff;
+  result[result.length - 1] = crc >>> 8;
+  return result;
+}
+
+export function validRtuFrame(frame: Uint8Array): boolean {
+  if (frame.length < 4) return false;
+  const expected = crc16Modbus(frame.subarray(0, -2));
+  return frame.at(-2) === (expected & 0xff) && frame.at(-1) === (expected >>> 8);
+}
 /**
  * src/utils/modbusRtu.ts
  * 
