@@ -1,14 +1,15 @@
 // Modbus Workbench Service Worker - Cache-First Strategy for Offline Capability
 
 const CACHE_NAME = 'modbus-workbench-v1';
+const BASE_PATH = new URL('.', self.registration.scope).pathname;
 const PRECACHE_ASSETS = [
-  '/',
-  '/index.html',
-  '/manifest.json',
-  '/icon-192.png',
-  '/icon-512.png',
-  '/apple-touch-icon.png',
-  '/icon.svg'
+  BASE_PATH,
+  `${BASE_PATH}index.html`,
+  `${BASE_PATH}manifest.json`,
+  `${BASE_PATH}icon-192.png`,
+  `${BASE_PATH}icon-512.png`,
+  `${BASE_PATH}apple-touch-icon.png`,
+  `${BASE_PATH}icon.svg`
 ];
 
 // Install Event: Pre-cache core static assets safely
@@ -90,7 +91,7 @@ self.addEventListener('fetch', (event) => {
         .catch((error) => {
           // If offline and navigating pages, fallback to index.html
           if (event.request.mode === 'navigate') {
-            return caches.match('/index.html') || caches.match('/');
+            return caches.match(`${BASE_PATH}index.html`) || caches.match(BASE_PATH);
           }
           throw error;
         });

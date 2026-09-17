@@ -3,8 +3,8 @@
   "short_name": "Modbus WB",
   "name": "Modbus Workbench",
   "description": "Full-stack industrial Modbus TCP Server and Modbus RTU Client Workbench",
-  "start_url": "/",
-  "scope": "/",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
   "orientation": "any",
   "background_color": "#0a0a0a",
@@ -13,31 +13,31 @@
   "categories": ["utilities", "developer tools"],
   "icons": [
     {
-      "src": "/icon-192.png",
+      "src": "./icon-192.png",
       "type": "image/png",
       "sizes": "192x192",
       "purpose": "any"
     },
     {
-      "src": "/icon-192.png",
+      "src": "./icon-192.png",
       "type": "image/png",
       "sizes": "192x192",
       "purpose": "maskable"
     },
     {
-      "src": "/icon-512.png",
+      "src": "./icon-512.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any"
     },
     {
-      "src": "/icon-512.png",
+      "src": "./icon-512.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "maskable"
     },
     {
-      "src": "/icon.svg",
+      "src": "./icon.svg",
       "type": "image/svg+xml",
       "sizes": "any"
     }
